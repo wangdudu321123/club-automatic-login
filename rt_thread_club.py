@@ -41,13 +41,13 @@ def login_in_club(user_name, pass_word):
     day_num = None
     # check sign in days
     try:
-        element = driver.find_element(By.XPATH, "/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/a[1]")
+        element = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/div[2]/div/div[1]/div[2]/a")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
     else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
-        driver.find_element(By.XPATH, '/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/h3[1]/div[1]/a[1]').click()
+        driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div/div[1]/div[1]/h3/div/a').click()
         time.sleep(5)
         driver.get_screenshot_as_file("/home/runner/paihang.png")
 
