@@ -30,6 +30,8 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.LINK_TEXT, u"立即签到")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
+        driver.quit()
+        sys.exit(1)
     else:
         element.click()
         logging.info("sign in success!")
@@ -48,5 +50,7 @@ def login_in_club(user_name, pass_word):
         driver.find_element(By.XPATH, '/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/h3[1]/div[1]/a[1]').click()
         time.sleep(5)
         driver.get_screenshot_as_file("/home/runner/paihang.png")
-        driver.quit()
+
+    driver.quit()
+
     return day_num
