@@ -30,8 +30,8 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.LINK_TEXT, u"立即签到")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-        driver.quit()
-        sys.exit(1)
+#        driver.quit()
+#        sys.exit(1)
     else:
         element.click()
         logging.info("sign in success!")
