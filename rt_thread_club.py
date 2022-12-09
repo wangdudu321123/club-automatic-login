@@ -14,24 +14,30 @@ def login_in_club(user_name, pass_word):
     driver = webdriver.Chrome(chrome_options=option)
     driver.maximize_window()
     # login in
-    driver.get("https://www.rt-thread.org/account/user/index.html?response_type=code&authorized=yes&scope=basic&state=1588816557615&client_id=30792375&redirect_uri=https://club.rt-thread.org/index/user/login.html")
-    element = driver.find_element(By.ID, "username")
-    element.send_keys(user_name)
-    element = driver.find_element(By.ID, 'password')
-    element.send_keys(pass_word)
-    driver.find_element(By.ID, 'login').click()
-    time.sleep(10)
+    for i in range(3):
+        driver.get("https://www.rt-thread.org/account/user/index.html?response_type=code&authorized=yes&scope=basic&state=1588816557615&client_id=30792375&redirect_uri=https://club.rt-thread.org/index/user/login.html")
+        element = driver.find_element(By.ID, "username")
+        element.send_keys(user_name)
+        element = driver.find_element(By.ID, 'password')
+        element.send_keys(pass_word)
+        driver.find_element(By.ID, 'login').click()
+        time.sleep(10)
 
-    current_url = driver.current_url
+        current_url = driver.current_url
+        if current_url != "https://club.rt-thread.org/":
+            logging.error("username or password error, please check it, login in failed!");
+            continue
+        else:
+            break
+
     if current_url != "https://club.rt-thread.org/":
-        logging.error("username or password error, please check it, login in failed!");
+        logging.error("login in failed!");
         sys.exit(1)
+
     try:
         element = driver.find_element(By.LINK_TEXT, u"立即签到")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-#        driver.quit()
-#        sys.exit(1)
     else:
         element.click()
         logging.info("sign in success!")
