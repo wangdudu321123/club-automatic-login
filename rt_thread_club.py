@@ -11,7 +11,7 @@ def login_in_club(user_name, pass_word):
     option.add_argument('headless')
     option.add_argument('no-sandbox')
     option.add_argument('disable-dev-shm-usage')
-    driver = webdriver.Chrome(chrome_options=option)
+    driver = webdriver.Chrome(options=option)
     driver.maximize_window()
     # login in
     for i in range(3):
