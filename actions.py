@@ -41,7 +41,7 @@ def main():
 
     delay = random.randint(1, 60)
     ticks = time.time()
-    print("Sleeping {1:.0f} {0:d}".format(delay, ticks))
+    logging.info("Sleeping {1:.0f} {0:d}".format(delay, ticks))
     time.sleep(delay)
     day_num = login_in_club(username, password)
     if day_num == None:
