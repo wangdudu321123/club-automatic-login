@@ -4,7 +4,7 @@ import time
 import logging
 import subprocess
 from rt_thread_club import login_in_club
-
+import random
 
 def execute_command(cmd_string, cwd=None, shell=True):
     """Execute the system command at the specified address."""
@@ -38,6 +38,11 @@ def main():
 #    execute_command("sudo apt install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils > /dev/null 2>&1")
 #    execute_command("sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /dev/null 2>&1")
 #    execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
+
+    delay = random.randint(1, 60)
+    ticks = time.time()
+    print("Sleeping {1:.0f} {0:d}".format(delay, ticks))
+    time.sleep(delay)
     day_num = login_in_club(username, password)
     if day_num == None:
         sys.exit(1)
