@@ -21,7 +21,7 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.ID, 'password')
         element.send_keys(pass_word)
         driver.find_element(By.ID, 'login').click()
-        time.sleep(10)
+        time.sleep(5)
 
         current_url = driver.current_url
         if current_url != "https://club.rt-thread.org/":
