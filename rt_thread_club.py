@@ -54,12 +54,15 @@ def login_in_club(user_name, pass_word):
     else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
-        driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div/div[1]/div[1]/h3/div/a').click()
-        time.sleep(3)
-        driver.get_screenshot_as_file("/home/runner/paihang.png")
-        driver.find_element(By.XPATH, '/html/body/div[9]/span[1]/a').click()
+        # driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div/div[1]/div[1]/h3/div/a').click()
+        # time.sleep(3)
+        # driver.get_screenshot_as_file("./paihang.png")
+        # driver.find_element(By.XPATH, '/html/body/div[9]/span[1]/a').click()
 
-    weekday = time.localtime().tw_wday
+    driver.refresh()
+    time.sleep(3)
+
+    weekday = time.localtime().tm_wday
     if weekday == 6:
         element = driver.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div/div/div/div[1]/a')
         driver.get(element.get_attribute("href"))
