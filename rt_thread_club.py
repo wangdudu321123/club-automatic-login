@@ -56,6 +56,18 @@ def login_in_club(user_name, pass_word):
         driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div/div[1]/div[1]/h3/div/a').click()
         time.sleep(5)
         driver.get_screenshot_as_file("/home/runner/paihang.png")
+        driver.find_element(By.XPATH, '/html/body/div[9]/span[1]/a').click()
+
+    weekday = time.localtime().tw_wday
+    if weekday == 6:
+        element = driver.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div/div/div/div[1]/a')
+        print(element.get_attribute("href"))
+        driver.get(element.get_attribute("href"))
+        time.sleep(5)
+        print(driver.current_url)
+        element = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/a[1]')
+        print(element.text)
+        element.click()
 
     driver.quit()
 
