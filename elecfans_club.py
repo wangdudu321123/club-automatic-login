@@ -56,9 +56,8 @@ def login_in_club(user_name, pass_word):
     except Exception as e:
         logging.error("Error message : {0}".format(e))
     else:
-        print(element.text[3:])
-        # score_num = element.text
-        # logging.info("signed in today : {0}".format(day_num))
+        score_num = element.text[3:]
+        logging.info("signed in scores : {0}".format(score_num))
 
     driver.quit()
 
