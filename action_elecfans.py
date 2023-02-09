@@ -45,6 +45,13 @@ def main():
     if score_num == None:
         sys.exit(1)
 
+    try:
+        with open("sign_in_scores.txt", "w") as f:
+            f.write(score_num)
+    except Exception as e:
+        logging.error(e)
+        sys.exit(1)
+
 if __name__ == "__main__":
     init_logger()
     main()
