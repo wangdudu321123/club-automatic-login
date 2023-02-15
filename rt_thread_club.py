@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import logging
+import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -22,7 +23,7 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.ID, 'password')
         element.send_keys(pass_word)
         driver.find_element(By.ID, 'login').click()
-        time.sleep(10)
+        time.sleep(8)
 
         current_url = driver.current_url
         if current_url != "https://club.rt-thread.org/":
@@ -43,7 +44,7 @@ def login_in_club(user_name, pass_word):
         element.click()
         logging.info("sign in success!")
 
-    time.sleep(1)
+    time.sleep(2)
 
     day_num = None
     # check sign in days
@@ -60,11 +61,13 @@ def login_in_club(user_name, pass_word):
         # driver.find_element(By.XPATH, '/html/body/div[9]/span[1]/a').click()
 
     driver.refresh()
-    time.sleep(3)
+    time.sleep(2)
 
     weekday = time.localtime().tm_wday
     if weekday == 6:
-        element = driver.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div/div/div/div[1]/a')
+        elements = driver.find_elements(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div/div/div/div')
+        li = random.randint(1, 6)
+        element = elements[li].find_element(By.XPATH, 'a')
         driver.get(element.get_attribute("href"))
         time.sleep(5)
         element = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/a[1]')
