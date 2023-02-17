@@ -13,16 +13,12 @@ on:
       - '.github/workflows/actions_rtt.yml'
       - '/actions_rtt.py'
       - '/rt_thread_club.py'
-    paths-ignore:
-      - docs/**
-      - cmake/**
-      - scripts/**
   pull_request:
     branches: [ master ]
-    paths-ignore:
-      - docs/**
-      - cmake/**
-      - scripts/**
+    paths:
+      - '.github/workflows/actions_rtt.yml'
+      - '/actions_rtt.py'
+      - '/rt_thread_club.py'
 
 jobs:
   # This workflow contains a single job called "build"
