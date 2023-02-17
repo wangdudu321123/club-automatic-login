@@ -9,6 +9,10 @@ on:
     - cron:  '5 23 * * *'
   push:
     branches: [ master ]
+    paths:
+      - '.github/workflows/actions_rtt.yml'
+      - '/actions_rtt.py'
+      - '/rt_thread_club.py'
     paths-ignore:
       - docs/**
       - cmake/**
@@ -43,7 +47,7 @@ jobs:
         CLUB_USERNAME: ${{ secrets.USERNAME }}
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        python actions.py
+        python actions_rtt.py
         echo "CLUB_DAY_NUMERS=$(cat sign_in_days.txt)" >> $GITHUB_ENV
     - name: 'Get Date'
       run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
