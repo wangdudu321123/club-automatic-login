@@ -45,10 +45,5 @@ jobs:
       run: |
         python actions_elecfans.py
         echo "CLUB_SCORES=$(cat sign_in_scores.txt)" >> $GITHUB_ENV
-        echo "CLUB_SCORES=$(cat sign_in_scores.txt)"
-        echo "CLUB_SCORES=$(cat sign_in_scores.txt)" >> $GITHUB_ENV
     - name: 'Get Date'
-      run: |
-        echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
-        echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
-        echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+      run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
