@@ -46,4 +46,4 @@ jobs:
         python actions_rtt.py
         echo "CLUB_DAY_NUMERS=$(cat sign_in_days.txt)" >> $GITHUB_ENV
     - name: 'Get Date'
-      run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+      run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
