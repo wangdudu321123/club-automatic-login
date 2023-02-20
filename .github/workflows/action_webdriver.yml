@@ -30,7 +30,7 @@ jobs:
     - name: Sign In
       timeout-minutes: 70
       run: |
-        python actions_rtt.py
+        python webdriver_test.py
         echo "WEBDRIVER_HEADERS=$(cat headers.txt)" >> $GITHUB_ENV
     - name: 'Get Date'
       run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
