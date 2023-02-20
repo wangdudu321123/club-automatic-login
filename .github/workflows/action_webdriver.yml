@@ -31,6 +31,6 @@ jobs:
       timeout-minutes: 70
       run: |
         python webdriver_test.py
-        echo "WEBDRIVER_HEADERS=$(cat headers.txt)" >> $GITHUB_ENV
+        echo "WEBDRIVER_HEADERS=$(cat headers.txt)"
     - name: 'Get Date'
       run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
