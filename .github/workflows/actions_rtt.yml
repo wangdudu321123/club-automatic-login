@@ -11,14 +11,14 @@ on:
     branches: [ master ]
     paths:
       - '.github/workflows/actions_rtt.yml'
-      - '/actions_rtt.py'
-      - '/rt_thread_club.py'
+      - 'actions_rtt.py'
+      - 'rt_thread_club.py'
   pull_request:
     branches: [ master ]
     paths:
       - '.github/workflows/actions_rtt.yml'
-      - '/actions_rtt.py'
-      - '/rt_thread_club.py'
+      - 'actions_rtt.py'
+      - 'rt_thread_club.py'
 
 jobs:
   # This workflow contains a single job called "build"
