@@ -39,7 +39,7 @@ def main():
 #    execute_command("sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /dev/null 2>&1")
 #    execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
 
-    delay = random.randint(1, 120)
+    delay = random.randint(1, 12)
     time.sleep(delay)
     score_num = login_in_club(username, password)
     if score_num == None:
