@@ -34,14 +34,19 @@ def login_in_club(user_name, pass_word):
 
     if current_url != "https://club.rt-thread.org/":
         logging.error("login in failed!");
-        sys.exit(1)
+        return None
 
     try:
         element = driver.find_element(By.LINK_TEXT, u"立即签到")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-    else:
+
+    try:
         element.click()
+    except Exception as e:
+        logging.error("Error message : {0}".format(e))
+        return None
+    else:
         logging.info("sign in success!")
 
     time.sleep(2)
