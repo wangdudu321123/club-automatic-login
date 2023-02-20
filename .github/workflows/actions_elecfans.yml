@@ -17,8 +17,8 @@ on:
     branches: [ master ]
     paths:
       - '.github/workflows/actions_elecfans.yml'
-      - '/actions_elecfans.py'
-      - '/elecfans_club.py'
+      - 'actions_elecfans.py'
+      - 'elecfans_club.py'
 
 jobs:
   # This workflow contains a single job called "build"
