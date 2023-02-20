@@ -5,7 +5,6 @@ import time
 import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 
 def login_in_club(user_name, pass_word):
     option = webdriver.ChromeOptions()
@@ -13,6 +12,7 @@ def login_in_club(user_name, pass_word):
     option.add_argument('no-sandbox')
     option.add_argument('disable-dev-shm-usage')
     driver = webdriver.Chrome(options=option)
+    driver.set_window_size(1024, 768)
     driver.maximize_window()
     # login in
     for i in range(3):
@@ -26,7 +26,7 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.NAME, "password")
         element.send_keys(pass_word)
         driver.find_element(By.XPATH, '/html/body/div[1]/form[1]/div[5]/button').click()
-        time.sleep(10)
+        time.sleep(8)
 
         current_url = driver.current_url
         if current_url != "https://bbs.elecfans.com/":
@@ -43,11 +43,17 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element(By.ID, "useritem")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-    else:
+        sys.exit(1)
+
+    try:
         element.click()
+    except Exception as e:
+        logging.error("Error message : {0}".format(e))
+        sys.exit(1)
+    else:
         logging.info("sign in success!")
 
-    time.sleep(3)
+    time.sleep(2)
 
     score_num = None
     # check score
