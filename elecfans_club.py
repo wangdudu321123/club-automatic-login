@@ -37,19 +37,19 @@ def login_in_club(user_name, pass_word):
 
     if current_url != "https://bbs.elecfans.com/":
         logging.error("login in failed!");
-        sys.exit(1)
+        return None
 
     try:
         element = driver.find_element(By.ID, "useritem")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-        sys.exit(1)
+        return None
 
     try:
         element.click()
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-        sys.exit(1)
+        return None
     else:
         logging.info("sign in success!")
 
