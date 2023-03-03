@@ -6,7 +6,7 @@ name: elecfans club automatic check-in
 on:
   # runs at 00:00 UTC every day
   schedule:
-    - cron:  '5 0 * * *'
+    - cron:  '5 23 * * *'
   push:
     branches: [ master ]
     paths:
