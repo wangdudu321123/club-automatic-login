@@ -71,7 +71,7 @@ def login_in_club(user_name, pass_word):
     weekday = time.localtime().tm_wday
     if weekday == 6:
         elements = driver.find_elements(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div/div/div/div')
-        li = random.randint(1, 6)
+        li = random.randint(0, 5)
         element = elements[li].find_element(By.XPATH, 'a')
         driver.get(element.get_attribute("href"))
         time.sleep(5)
