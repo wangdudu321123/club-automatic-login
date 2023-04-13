@@ -6,6 +6,43 @@ import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+# sign in
+def sign_in_club(driver):
+    for retry in range(3):
+        driver.get("https://bbs.elecfans.com/plugin.php?id=dsu_paulsign:sign")
+        time.sleep(5)
+
+        try:
+            element = driver.find_element(By.XPATH, '//*[@id="wp"]/div[2]/div[2]/p[2]/a')
+        except Exception as e:
+            logging.error("Error message : {0}".format(e))
+            return
+        else:
+            title = element.get_attribute("title")
+            if title == u"我要签到":
+                element.click()
+            else:
+                return
+
+        time.sleep(10)
+
+        try:
+            element = driver.find_element(By.XPATH, '//*[@id="kx"]')
+        except Exception as e:
+            logging.error("Error message : {0}".format(e))
+            continue
+        else:
+            element.click()
+
+        element = driver.find_element(By.XPATH, '//*[@id="qiandao"]/div/table[2]/tbody/tr[1]/td/label[3]')
+        element.click()
+
+        element = driver.find_element(By.XPATH, '//*[@id="qiandao"]/p/button')
+        print(element.text)
+        element.click()
+        break
+
+# login in
 def login_in_club(user_name, pass_word):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
@@ -14,8 +51,8 @@ def login_in_club(user_name, pass_word):
     driver = webdriver.Chrome(options=option)
     driver.set_window_size(1024, 768)
     driver.maximize_window()
-    # login in
-    for i in range(3):
+
+    for retry in range(3):
         driver.get("https://passport.elecfans.com/login?referer=https://bbs.elecfans.com/./&siteid=4&scene=bbspage&account=&fromtype=undefined#https%3A%2F%2Fbbs.elecfans.com%2Fmember.php%3Fmod%3Dlogging%26action%3Dlogin")
         time.sleep(1)
         driver.find_element(By.XPATH, '/html/body').click()
@@ -64,6 +101,8 @@ def login_in_club(user_name, pass_word):
     else:
         score_num = element.text[3:]
         logging.info("signed in scores : {0}".format(score_num))
+
+    sign_in_club(driver)
 
     driver.quit()
 
