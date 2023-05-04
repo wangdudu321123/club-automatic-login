@@ -56,7 +56,13 @@ def login_in_club(user_name, pass_word):
         driver.get("https://passport.elecfans.com/login?referer=https://bbs.elecfans.com/./&siteid=4&scene=bbspage&account=&fromtype=undefined#https%3A%2F%2Fbbs.elecfans.com%2Fmember.php%3Fmod%3Dlogging%26action%3Dlogin")
         time.sleep(1)
         driver.find_element(By.XPATH, '/html/body').click()
-        driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/p[2]/span[2]').click()
+        try:
+            element = driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/p[2]/span[2]')
+        except Exception as e:
+            continue
+        else:
+            element.click()
+
         time.sleep(3)
         element = driver.find_element(By.NAME, "account")
         element.send_keys(user_name)
