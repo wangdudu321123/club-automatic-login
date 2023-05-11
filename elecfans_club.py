@@ -20,7 +20,14 @@ def sign_in_club(driver):
         else:
             title = element.get_attribute("title")
             if title == u"我要签到":
-                element.click()
+                try:
+                    element.click()
+                except Exception as e:
+                    logging.error("Error message : {0}".format(e))
+                    time.sleep(10)
+                    continue
+                else:
+                    pass
             else:
                 return
 
@@ -52,6 +59,7 @@ def login_in_club(user_name, pass_word):
     driver.set_window_size(1024, 768)
     driver.maximize_window()
 
+    current_url = ''
     for retry in range(3):
         driver.get("https://passport.elecfans.com/login?referer=https://bbs.elecfans.com/./&siteid=4&scene=bbspage&account=&fromtype=undefined#https%3A%2F%2Fbbs.elecfans.com%2Fmember.php%3Fmod%3Dlogging%26action%3Dlogin")
         time.sleep(1)
@@ -61,7 +69,14 @@ def login_in_club(user_name, pass_word):
         except Exception as e:
             continue
         else:
-            element.click()
+            try:
+                element.click()
+            except Exception as e:
+                logging.error("Error message : {0}".format(e))
+                time.sleep(10)
+                continue
+            else:
+                pass
 
         time.sleep(3)
         element = driver.find_element(By.NAME, "account")
@@ -74,6 +89,7 @@ def login_in_club(user_name, pass_word):
         current_url = driver.current_url
         if current_url != "https://bbs.elecfans.com/":
             logging.error("account or password error, please check it, login in failed!");
+            time.sleep(10)
             continue
         else:
             break
