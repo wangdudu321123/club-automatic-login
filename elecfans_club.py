@@ -98,19 +98,24 @@ def login_in_club(user_name, pass_word):
         logging.error("login in failed!");
         return None
 
-    try:
-        element = driver.find_element(By.ID, "useritem")
-    except Exception as e:
-        logging.error("Error message : {0}".format(e))
-        return None
-
-    try:
-        element.click()
-    except Exception as e:
-        logging.error("Error message : {0}".format(e))
-        return None
-    else:
-        logging.info("sign in success!")
+    for retry in range(3):
+        try:
+            element = driver.find_element(By.ID, "useritem")
+        except Exception as e:
+            logging.error("Error message : {0}".format(e))
+            if retry == 2:
+                return None
+            else:
+                time.sleep(3)
+        else:
+            try:
+                element.click()
+            except Exception as e:
+                logging.error("Error message : {0}".format(e))
+                return None
+            else:
+                logging.info("sign in success!")
+            break
 
     time.sleep(2)
 
