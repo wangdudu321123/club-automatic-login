@@ -16,19 +16,19 @@ def login_in_club(user_name, pass_word):
     driver.set_window_size(1024, 768)
     driver.maximize_window()
     # login in
-    for i in range(3):
+    for i in range(5):
         driver.get("https://www.rt-thread.org/account/user/index.html?response_type=code&authorized=yes&scope=basic&state=1588816557615&client_id=30792375&redirect_uri=https://club.rt-thread.org/index/user/login.html")
         element = driver.find_element(By.ID, "username")
         element.send_keys(user_name)
         element = driver.find_element(By.ID, 'password')
         element.send_keys(pass_word)
         driver.find_element(By.ID, 'login').click()
-        time.sleep(8)
+        time.sleep(20)
 
         current_url = driver.current_url
         if current_url != "https://club.rt-thread.org/":
             logging.error("username or password error, please check it, login in failed!");
-            time.sleep(60)
+            time.sleep(120)
             continue
         else:
             break
